@@ -1,0 +1,28 @@
+[Unit]
+Description=MusiKa Discord Audio Bot (Residential Instance)
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=luis
+WorkingDirectory=/home/luis/projects/musika
+ExecStart=/home/luis/projects/musika/venv/bin/python bot.py
+Restart=always
+RestartSec=5
+KillMode=process
+TimeoutStopSec=10
+
+# Configuración de Entorno y Variables
+Environment=PYTHONUNBUFFERED=1
+Environment=PORT=8080
+Environment=BOT_INSTANCE_NAME=raspiluis
+EnvironmentFile=-/home/luis/projects/musika/.env
+
+# Límites y Seguridad
+LimitNOFILE=65536
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

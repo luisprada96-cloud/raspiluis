@@ -1,0 +1,37 @@
+version: '3.8'
+
+# ==============================================================================
+#  🍓 RaspiLuis Docker Compose Starter
+#  Plantillas de servicios útiles y ligeros para tu servidor Raspberry Pi.
+#  Para levantar un servicio: docker compose up -d <servicio>
+# ==============================================================================
+
+services:
+  # Dozzle: Visor de logs en tiempo real para todos tus contenedores web
+  dozzle:
+    image: amir20/dozzle:latest
+    container_name: dozzle
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8888:8080"
+    environment:
+      - DOZZLE_LEVEL=info
+
+  # Portainer (Opcional): Panel web para gestionar Docker de forma visual
+  # portainer:
+  #   image: portainer/portainer-ce:latest
+  #   container_name: portainer
+  #   restart: unless-stopped
+  #   security_opt:
+  #     - no-new-privileges:true
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - portainer_data:/data
+  #   ports:
+  #     - "9000:9000"
+
+# volumes:
+#   portainer_data:

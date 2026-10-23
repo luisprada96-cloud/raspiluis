@@ -1,0 +1,20 @@
+# Secrets and environment files
+.env
+*.local
+*.secret
+*.pem
+*.key
+
+# Logs
+*.log
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# OS generated
+.DS_Store
+Thumbs.db
