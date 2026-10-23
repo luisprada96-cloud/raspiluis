@@ -46,7 +46,6 @@ sudo apt install -y \
     jq \
     unzip \
     zip \
-    software-properties-common \
     apt-transport-https \
     ca-certificates \
     gnupg \
