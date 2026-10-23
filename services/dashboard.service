@@ -1,0 +1,23 @@
+[Unit]
+Description=RaspiLuis Web Telemetry & Control Dashboard
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=luis
+WorkingDirectory=/home/luis/projects/dashboard
+ExecStart=/home/luis/projects/dashboard/venv/bin/python server.py
+Restart=always
+RestartSec=5
+KillMode=process
+TimeoutStopSec=10
+Environment=PYTHONUNBUFFERED=1
+Environment=PORT=3000
+
+LimitNOFILE=65536
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
